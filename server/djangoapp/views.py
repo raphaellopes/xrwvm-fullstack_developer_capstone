@@ -106,7 +106,7 @@ def get_dealer_reviews(request, dealer_id):
         dealer_reviews = get_request(f'/fetchReviews/dealer/{dealer_id}')
 
         for review_detail in dealer_reviews:
-            sentiment_resp = sentiment_analyzer_url(review_detail['review'])
+            sentiment_resp = analyze_review_sentiments(review_detail['review'])
             review_detail['sentiment'] = sentiment_resp['sentiment']
 
         return JsonResponse({
